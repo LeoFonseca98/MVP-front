@@ -86,7 +86,7 @@ export default function Home() {
       await criarTransacao({
         type: transacaoType,
         value: parseFloat(transacaoValue),
-        description: transacaoDesc.trim() || undefined,
+        description: transacaoDesc.trim(),
         obraId,
       });
       setTransacaoType("entrada");
