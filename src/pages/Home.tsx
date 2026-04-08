@@ -328,7 +328,9 @@ export default function Home() {
         <div className="modal-overlay" onClick={() => setShowRelatório(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
-              <h2>Relatório - {obterObraPorId(relatórioObraId)?.name}</h2>
+              {relatórioObraId !== null && (
+                <h2>Relatório - {obterObraPorId(relatórioObraId)?.name}</h2>
+              )}
               <button
                 className="modal-close"
                 onClick={() => setShowRelatório(false)}
@@ -338,7 +340,8 @@ export default function Home() {
             </div>
 
             <div className="modal-body">
-              {obterTransacoesObra(relatórioObraId || 0).length === 0 ? (
+              {obterTransacoesObra(relatórioObraId || 0
+              ).length === 0 ? (
                 <p className="empty-message">Nenhuma transação registrada</p>
               ) : (
                 <>
