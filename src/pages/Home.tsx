@@ -60,8 +60,8 @@ export default function Home() {
     try {
       await criarObra({
         name: name.trim(),
-        client: client.trim() || null,
-        description: description.trim() || null,
+        client: client.trim() || undefined,
+        description: description.trim() || undefined,
         status,
       });
       setName("");
@@ -86,7 +86,7 @@ export default function Home() {
       await criarTransacao({
         type: transacaoType,
         value: parseFloat(transacaoValue),
-        description: transacaoDesc.trim() || null,
+        description: transacaoDesc.trim() || undefined,
         obraId,
       });
       setTransacaoType("entrada");
@@ -128,7 +128,7 @@ export default function Home() {
     return transacoes.filter((t) => t.obraId === obraId);
   }
 
-  function obterObraPorId(id: number | null) {
+  function obterObraPorId(id: number | undefined) {
     return obras.find((o) => o.id === id);
   }
 
@@ -240,7 +240,7 @@ export default function Home() {
                       <button
                         className="btn btn-success"
                         onClick={() => {
-                          setSelectedObraId(selectedObraId === obra.id ? null : obra.id);
+                          setSelectedObraId(selectedObraId === obra.id ? undefined : obra.id);
                           setTransacaoValue("");
                           setTransacaoDesc("");
                         }}

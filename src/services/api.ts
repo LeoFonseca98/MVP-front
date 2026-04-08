@@ -9,8 +9,8 @@ export async function getObras() {
 
 export async function criarObra(obra: {
   name: string;
-  client?: string | null;
-  description?: string | null;
+  client?: string;
+  description?: string;
   status: string;
 }) {
   const response = await fetch(`${API_BASE}/obras`, {
